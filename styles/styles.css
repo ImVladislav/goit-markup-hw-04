@@ -18,6 +18,7 @@ general rules
 /*general rules*/
 :root {
     --blue: #2196F3;
+    --portfolio-bg-blue: rgba(33, 150, 243, 0.9);
     --white: #ffffff;
     --black-text: #212121;
     --gray-text: #757575;
@@ -84,13 +85,18 @@ header {
 }
 header .container .links ul {
     width: 40%;
-    list-style: none;
+    /* list-style: none;
     margin-top: 0;
-    padding-left: 0;
+    padding-left: 0; */
     display: flex;
 }
-.header-nav .links ul li{
-    padding-top: 32px;
+/* .header-nav .links ul li{
+    padding-top: 32px;   
+} */
+.links ul li .current {
+    color: var(--blue);
+    display: flex;
+    
 }
 .links ul li:first-child{
     margin-left: 93px;
@@ -100,6 +106,7 @@ header .container .links ul {
 }
 .links ul li {
     margin-right: 50px;
+    display: flex;
 }
 .links li a {
     font-family: 'Roboto';
@@ -107,12 +114,32 @@ header .container .links ul {
     line-height: 1.14;
     letter-spacing: 0.02;
     color: var(--black-text);
-
     padding: 32px 0px;
 }
+
+.current::after{
+    content:'';
+    /* border-bottom: 4px solid var(--blue);
+    border-height: 4px; */
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--blue);
+
+}
+.links ul li{position: relative;}
+
 .links li a span {
     margin: 0;
     color: var(--blue);;
+}
+
+.links ul li a:hover,.links ul li a:focus, .phone:hover  {
+    color: var(--blue);
+    fill: var(--blue);
+    transition: color .5s ease-in-out;
 }
 
 /*header contacts*/
@@ -128,31 +155,46 @@ header .container .links ul {
 }
 .links .contacts li {
     padding: 32px 0px;
+
 } 
+
 .tel {
     color: var(--gray-text);
     padding-top: 32px;
-    display: inline-block;
+    padding-bottom: 32px;
+    display: flex;
+    padding-right: 20px;
 }
+/* .contacts-svg:hover svg{
+    fill: #2196f3;
+} */
 
 .mail {
     margin-right: 50px;
     color: var(--gray-text);
     padding-top: 32px;
-    display: inline-block;
+    padding-bottom: 32px;
+    display: flex;
+    align-items: center;
 
 }
 
 .phone {
     width: 16px;
     height: 14px;
-    margin-right: 10px;  
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    fill: currentColor;
 }
 
 .e-mail {
     width: 16px;
     height: 12px;
     margin-right: 10px;
+    display: flex;
+    align-items: center;
+    fill: currentColor;
 }
 
 
@@ -164,6 +206,7 @@ footer {
 }
 footer .container{
     display: flex;
+    align-items: baseline;
 }
 .bottom_logo{
     display: flex;
@@ -210,14 +253,13 @@ address{
 footer .social-networks-footer{
     margin-left: 70px;
 }
-footer .social-networks-footer h2{
+footer .social-networks-footer p{
     font-family: 'Roboto';
     font-weight: 700;
     line-height: 16px;
     text-transform: uppercase;
     color: var(--white);
     margin-bottom: 20px;
-    margin-top: 12px;
 }
 footer .social-networks-footer ul{
     display: flex;
@@ -268,6 +310,7 @@ footer .social-networks-footer ul{
         rgba(47, 48, 58, 0.4)),
     url(../images/bg1.jpg);
     background-position: center;
+    max-width: 1600px;
 }
 
 .banner h1 {
@@ -307,9 +350,12 @@ footer .social-networks-footer ul{
 .benefits-img {
     background: #F5F4FA;
     border-radius: 4px;
-    display: inline-block;
-    padding: 25px 102px;
+    display: flex;
+    min-width:270px;
+    min-height:120px ;
     margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
 }
 
 .benefits ul {
@@ -320,7 +366,7 @@ footer .social-networks-footer ul{
 }
 .benefits ul li {
     margin-right: 30px;
-    width: 25%;
+    /* width: 25%; */
 }
 .benefits ul li svg {
     width: 70px;
@@ -348,15 +394,15 @@ footer .social-networks-footer ul{
     margin-bottom: 0;
  }
  .benefits ul li .benefits-img .svg-benedfit {
-    width: 70px;
-    height: 70px;
+    /* width: 70px;
+    height: 70px; */
     background-size: 270px ;
     background-color: #757575;
 }
-svg .svg-benedfit {
+/* svg .svg-benedfit {
     width: 71px;
     height: 70px;
-}
+} */
 
 
 /*works*/
@@ -425,7 +471,7 @@ svg .svg-benedfit {
     text-align: center;
     letter-spacing: 0.03em;
     color: var(--black-text);
-    margin: 30px 0 10px;
+    margin-bottom: 10px;
 }
 .team  p {
     font-family: 'Roboto';
@@ -434,16 +480,22 @@ svg .svg-benedfit {
     line-height: 1.2;
     letter-spacing: 0.03em;
     color: var(--gray-text);
+    margin-bottom: 16px;
+    
 }
-.social-networks{
+.social-networks {
     display: flex;
+    /* padding: 28px 44px 42px 44px; */
 }
+
+
 .social-networks__icon {
     width: 44px;
     height: 44px;
 }
-
-
+.team-card{
+    padding: 30px 32px 30px 32px;
+}
 /* regular customer */
 .regular-customers  h2{
     text-align: center;
@@ -456,29 +508,32 @@ svg .svg-benedfit {
 }
 .clients-logo__item:hover {
     border: 1px solid #2196f3;
-}
+} */
 
 .clients-logo__item:hover svg{
     fill: #2196f3;
 }
 
 .logo-svg{
-    width: 106px;
-    height: 60px;
+    width: 170px;
+    height: 92px;
     fill:#afb1b8;
-    
-    /* fill: #afb1b8"  */
 }
 .clients-logo__item {
-    padding: 16px 32px;
     border: 1px solid #AFB1B8;
     border-radius: 4px;
+    display: block;
 }
-.logo-svg:hover{
-    /* fill: #2196F3; */
+.clients-logo__item:hover svg, .clients-logo__item:focus svg{
+    fill: #2196f3;
+}
+
+
+.logo-svg:hover .logo-svg:focus{
+    fill: #2196F3; 
     cursor: pointer;
-    stroke-opacity: 0.7;
-    stroke: #2196F3;
+    /* stroke-opacity: 0.7;
+    stroke: #2196F3; */
 }
 /*portfolio*/
 
@@ -544,6 +599,7 @@ img {
     /*margin-top: 30px;*/
 }
 
+
 a:hover,a:focus{
     color: var(--blue);
     fill: var(--blue);
@@ -554,9 +610,7 @@ a:hover,a:focus{
     border-bottom: 1px solid #EEEEEE;
 }
 
-.links ul li .current {
-    color: var(--blue)
-}
+
 
 .btn:hover,.btn:focus {
     background: var(--blue);
@@ -566,19 +620,12 @@ a:hover,a:focus{
     cursor: pointer;
 
 }
-.item:hover{
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
-}
 
-.links ul li a:hover,.links ul li a:focus {
-    color: var(--blue);
-    transition: color .5s ease-in-out;
-}
-
+/* 
 .contacts li a .tel:hover{
     color: var(--blue);
     transition: color .5s ease-out;
-}
+} */
 /*container*/
 .container{
     width: 1200px;
@@ -615,21 +662,62 @@ margin-top: var(--card-set-gap);
    
     
 }
+.card{
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+
+
+.card-action p {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 370px;
+    height: 414px;
+    padding: 63px 24px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    opacity: 0;
+    background-color : var(--portfolio-bg-blue);
+    background-size: 100%;
+}
+.card-action {
+    opacity: 0;
+    color: var(--portfolio-bg-blue);
+}
+
+.card-action p:hover, .card-action p:focus{
+    opacity: 1;
+    overflow: hidden;
+    transition: color .5s ease-out;
+    
+}
+.card-action:hover, .card-action:focus{
+    opacity: 0.9;
+    overflow: hidden;
+    transition: color .5s ease-out;
+}
+
+.item:hover, .item:focus{
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
 
 /* social-networks */
 
-.social-networks{
-    padding: 28px 44px 42px 44px;
-}
+
 
 a .social-networks__icon {
     fill: #AFB1B8;
-
     padding: auto;
-
     justify-content: center;
-    display: flex;
-    
+    display: flex; 
 }
 
 .social-networks a{
@@ -650,4 +738,31 @@ a .social-networks__icon {
 }
 .social-networks a:hover, .social-networks a:focus{
     background-color: #2196F3;
+    outline: none;
 }
+
+
+
+
+
+
+/* 
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;info@devstudio.com
+    width: 100%;
+    height: 100%;
+}
+.modal{
+    height: 500px;
+    width: 500px;
+    background-color: #2196F3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.backdrop.is-hidden{
+    opacity: 0;
+    pointer-events: none;
+} */
