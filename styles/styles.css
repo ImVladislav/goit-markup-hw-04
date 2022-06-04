@@ -729,7 +729,7 @@ a .social-networks__icon {
 .social-networks a:last-child{
     margin-right: 0px;
 }
-.social-networks a:hover .social-networks__icon,:hover, .social-networks a:focus.social-networks__icon{
+.social-networks a:hover .social-networks__icon:hover, .social-networks a:focus.social-networks__icon{
     fill: var(--white);
     transition: var(--hover-time);
 }
